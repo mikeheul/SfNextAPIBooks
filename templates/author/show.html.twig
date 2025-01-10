@@ -31,11 +31,19 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {% for book in author.books %}
             <a href="{{ path('app_book_show', {id: book.id}) }}" class="group">
-                <div class="border border-gray-700 rounded-lg p-4 bg-gray-800 shadow hover:shadow-lg transition-transform duration-300">
-                    <h3 class="text-lg font-medium text-gray-100 group-hover:text-blue-400">
-                        {{ book.title }}
-                    </h3>
-                    <p class="text-sm text-gray-400 mt-1">{{ book.publishedDate }}</p>
+                <div class="flex gap-6 border border-gray-700 rounded-lg p-4 bg-gray-800 shadow hover:shadow-lg transition-transform duration-300">
+                    <!-- Affichage de la couverture du livre avec une taille réduite (miniature) -->
+                    <div class="mb-4">
+                        <img src="https://marketplace.canva.com/EAFf0E5urqk/1/0/1003w/canva-blue-and-green-surreal-fiction-book-cover-53S3IzrNxvY.jpg" 
+                            alt="Cover of {{ book.title }}" 
+                            class="w-24 h-36 object-cover rounded-lg shadow-md">
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-medium text-gray-100 group-hover:text-blue-400">
+                            {{ book.title }}
+                        </h3>
+                        <p class="text-sm text-gray-400 mt-1">{{ book.publishedDate }}</p>
+                    </div>
                 </div>
             </a>
         {% else %}
