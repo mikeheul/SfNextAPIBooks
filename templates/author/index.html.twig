@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authors{% endblock %}
+
+{% block body %}
+
+<h1 class="text-4xl font-bold py-6 text-white">Authors</h1>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {% for author in authors %}
+        <a href="{{ path('app_author_show', {id: author.id}) }}" class="group">
+            <div class="border border-gray-700 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-transform duration-300 bg-gray-800">
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-200 group-hover:text-blue-400">
+                        {{ author.firstname ~ ' ' ~ author.lastname }}
+                    </h2>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

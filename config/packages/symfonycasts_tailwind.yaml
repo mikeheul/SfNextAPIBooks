@@ -1,0 +1,3 @@
+symfonycasts_tailwind:
+    input_css: 'assets/styles/other.css'
+    config_file: 'tailwind.config.js'

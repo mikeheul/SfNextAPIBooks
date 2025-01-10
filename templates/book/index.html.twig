@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+
+<h1 class="text-4xl font-bold py-6 text-white">Books</h1>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {% for book in books %}
+        <a href="{{ path('app_book_show', {id: book.id}) }}" class="group">
+            <div class="border border-gray-700 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-transform duration-300 bg-gray-800">
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-200 group-hover:text-blue-400">{{ book.title }}</h2>
+                    <p class="text-sm text-gray-400 mt-2">{{ book.publishedDate }}</p>
+                </div>
+            </div>
+        </a>
+    {% endfor %}
+</div>
+
+{% endblock %}
