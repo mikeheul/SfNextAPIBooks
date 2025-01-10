@@ -8,9 +8,7 @@
         <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
     </head>
     <body class="bg-gray-900 text-gray-100">
         <header class="bg-gray-800 text-white shadow-lg">
@@ -37,8 +35,46 @@
             </nav>
         </header>
         <main class="p-6">
+
+            <!-- Affichage des messages flash -->
+            {% for message in app.flashes('success') %}
+            <div class="flash-message bg-green-500 text-white p-4 rounded-lg shadow-md mb-4" id="flash-success">
+                {{ message }}
+            </div>
+            {% endfor %}
+
+            {% for message in app.flashes('error') %}
+            <div class="flash-message bg-red-500 text-white p-4 rounded-lg shadow-md mb-4" id="flash-error">
+                {{ message }}
+            </div>
+            {% endfor %}
+
             {% block body %}
             {% endblock %}
         </main>
+
+        {% block javascripts %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    console.log("ok")
+                    // Sélectionner les messages flash
+                    const flashMessages = document.querySelectorAll('.flash-message');
+                    console.log(flashMessages); 
+                    
+                    flashMessages.forEach(function(message) {
+                        // Après 5 secondes (5000 ms), masquer le message avec une animation
+                        setTimeout(function() {
+                            message.style.transition = "opacity 1s ease-out";
+                            message.style.opacity = 0;
+
+                            // Après l'animation, retirer le message du DOM
+                            setTimeout(function() {
+                                message.remove();
+                            }, 1000);  // 1000 ms pour correspondre à la durée de la transition
+                        }, 5000); // Délai avant de masquer le message (5 secondes)
+                    });
+                });
+            </script>
+        {% endblock %}
     </body>
 </html>

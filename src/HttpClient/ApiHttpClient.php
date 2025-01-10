@@ -33,6 +33,26 @@ class ApiHttpClient extends AbstractController
 
         return $response->toArray();
     }
+
+    public function addBook(array $data)
+    {
+        try {
+            $response = $this->httpClient->request('POST', 'http://localhost:3000/api/book', [
+                'json' => $data,  // Les données du livre
+            ]);
+
+            // Vérifier si la requête a réussi
+            if ($response->getStatusCode() === 201) {
+                return $response->toArray(); // Retourner les données du livre créé
+            }
+
+            // Si le code de statut n'est pas 201, on lance une exception
+            throw new \Exception('Error adding book to database.');
+        } catch (\Exception $e) {
+            // Gérer l'exception si la requête échoue (erreur réseau, API hors ligne, etc.)
+            throw new \Exception('An error occurred while adding the book. Please try again later.');
+        }
+    }
     
     public function getAuthors()
     {
