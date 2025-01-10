@@ -9,17 +9,29 @@
         <form method="post" class="space-y-6">
             {{ form_start(form) }}
 
-            <!-- Title Field -->
-            <div>
-                {{ form_label(form.title, 'Book Title', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
-                <div class="mt-1">
-                    {{ form_widget(form.title, {
-                        'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
-                    }) }}
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Title Field -->
+                <div class="w-full">
+                    {{ form_label(form.title, 'Book Title', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
+                    <div class="mt-1">
+                        {{ form_widget(form.title, {
+                            'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
+                        }) }}
+                    </div>
+                    {{ form_errors(form.title) }}
                 </div>
-                {{ form_errors(form.title) }}
+                <!-- Author Field (Dropdown) -->
+                <div class="w-full">
+                    {{ form_label(form.author, 'Author', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
+                    <div class="mt-1">
+                        {{ form_widget(form.author, {
+                            'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
+                        }) }}
+                    </div>
+                    {{ form_errors(form.author) }}
+                </div>
             </div>
-
+            
             <!-- Description Field -->
             <div>
                 {{ form_label(form.description, 'Description', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
@@ -31,37 +43,29 @@
                 {{ form_errors(form.description) }}
             </div>
 
-            <!-- Published Date Field -->
-            <div>
-                {{ form_label(form.publishedDate, 'Published Date', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
-                <div class="mt-1">
-                    {{ form_widget(form.publishedDate, {
-                        'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
-                    }) }}
-                </div>
-                {{ form_errors(form.publishedDate) }}
-            </div>
+            <div class="flex flex-col md:flex-row gap-6">
 
-            <!-- Pages Field -->
-            <div>
-                {{ form_label(form.pages, 'Pages', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
-                <div class="mt-1">
-                    {{ form_widget(form.pages, {
-                        'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
-                    }) }}
+                <!-- Published Date Field -->
+                <div class="w-full">
+                    {{ form_label(form.publishedDate, 'Published Date', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
+                    <div class="mt-1">
+                        {{ form_widget(form.publishedDate, {
+                            'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
+                        }) }}
+                    </div>
+                    {{ form_errors(form.publishedDate) }}
                 </div>
-                {{ form_errors(form.pages) }}
-            </div>
-
-            <!-- Author Field (Dropdown) -->
-            <div>
-                {{ form_label(form.author, 'Author', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
-                <div class="mt-1">
-                    {{ form_widget(form.author, {
-                        'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
-                    }) }}
+    
+                <!-- Pages Field -->
+                <div class="w-full">
+                    {{ form_label(form.pages, 'Pages', {'label_attr': {'class': 'text-xl font-medium text-gray-300'}}) }}
+                    <div class="mt-1">
+                        {{ form_widget(form.pages, {
+                            'attr': {'class': 'w-full p-2 border border-gray-600 bg-gray-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'}
+                        }) }}
+                    </div>
+                    {{ form_errors(form.pages) }}
                 </div>
-                {{ form_errors(form.author) }}
             </div>
 
             <!-- Submit Button -->
