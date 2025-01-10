@@ -22,7 +22,16 @@
     </nav>
 
     <!-- Titre du livre -->
-    <h1 class="text-4xl font-bold text-white mb-4">{{ book.title }}</h1>
+    <h1 class="text-6xl font-bold text-white mb-4">{{ book.title }}</h1>
+
+    <!-- Afficher la couverture du livre -->
+    <div class="mb-6">
+        {# {% if book.coverImage %} #}
+            <img src="https://marketplace.canva.com/EAFf0E5urqk/1/0/1003w/canva-blue-and-green-surreal-fiction-book-cover-53S3IzrNxvY.jpg" alt="Cover of {{ book.title }}" class="w-full max-w-xs rounded-lg shadow-md">
+        {# {% else %} #}
+            {# <p class="text-gray-400">No cover image available.</p> #}
+        {# {% endif %} #}
+    </div>
 
     <!-- Auteur -->
     <p class="text-lg text-gray-400 mb-6"> 
