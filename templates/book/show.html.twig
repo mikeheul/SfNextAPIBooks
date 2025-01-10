@@ -25,31 +25,28 @@
     <h1 class="text-6xl font-bold text-white mb-4">{{ book.title }}</h1>
 
     <!-- Afficher la couverture du livre -->
-    <div class="mb-6">
-        {# {% if book.coverImage %} #}
-            <img src="https://marketplace.canva.com/EAFf0E5urqk/1/0/1003w/canva-blue-and-green-surreal-fiction-book-cover-53S3IzrNxvY.jpg" alt="Cover of {{ book.title }}" class="w-full max-w-xs rounded-lg shadow-md">
-        {# {% else %} #}
-            {# <p class="text-gray-400">No cover image available.</p> #}
-        {# {% endif %} #}
+    <div class="flex flex-col md:flex-row gap-6 mb-6">
+        <img src="https://marketplace.canva.com/EAFf0E5urqk/1/0/1003w/canva-blue-and-green-surreal-fiction-book-cover-53S3IzrNxvY.jpg" alt="Cover of {{ book.title }}" class="w-full max-w-xs rounded-lg shadow-md">
+        <div>
+            <p class="text-lg text-gray-400 mb-6"> 
+                <a href="{{ path('app_author_show', {id: book.author.id}) }}" class="text-blue-500 hover:underline">
+                    {{ book.author.firstname ~ ' ' ~ book.author.lastname }}
+                </a>
+            </p>
+            <p class="text-lg text-gray-400 mb-6"> 
+                {{ book.publishedDate }} <br>
+                {{ book.pages }} pages
+            </p>
+        
+            <!-- Description -->
+            <div class="bg-gray-800 border border-gray-700 p-4 rounded-lg">
+                <p class="text-gray-300 leading-relaxed">
+                    {{ book.description }}
+                </p>
+            </div>
+        </div>
     </div>
 
-    <!-- Auteur -->
-    <p class="text-lg text-gray-400 mb-6"> 
-        <a href="{{ path('app_author_show', {id: book.author.id}) }}" class="text-blue-500 hover:underline">
-            {{ book.author.firstname ~ ' ' ~ book.author.lastname }}
-        </a>
-    </p>
-    <p class="text-lg text-gray-400 mb-6"> 
-        {{ book.publishedDate }} <br>
-        {{ book.pages }} pages
-    </p>
-
-    <!-- Description -->
-    <div class="bg-gray-800 border border-gray-700 p-4 rounded-lg">
-        <p class="text-gray-300 leading-relaxed">
-            {{ book.description }}
-        </p>
-    </div>
 </div>
 
 {% endblock %}
